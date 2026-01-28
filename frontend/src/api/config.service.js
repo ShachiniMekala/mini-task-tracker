@@ -1,4 +1,4 @@
-import apiClient from './core.service';
+import apiClient from './client';
 
 export const configService = {
   getStatuses: () => apiClient.get('/statuses'),

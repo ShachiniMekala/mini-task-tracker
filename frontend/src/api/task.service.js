@@ -1,4 +1,4 @@
-import apiClient from './core.service';
+import apiClient from './client';
 
 export const taskService = {
   getByProject: (projectId, filters = {}) => {
