@@ -1,0 +1,39 @@
+project_index:
+    path: /api/projects
+    controller: App\Controller\ProjectController::index
+    methods: [GET]
+
+project_create:
+    path: /api/projects
+    controller: App\Controller\ProjectController::create
+    methods: [POST]
+
+task_index:
+    path: /api/projects/{projectId}/tasks
+    controller: App\Controller\TaskController::index
+    methods: [GET]
+
+task_create:
+    path: /api/projects/{projectId}/tasks
+    controller: App\Controller\TaskController::create
+    methods: [POST]
+
+task_update:
+    path: /api/tasks/{id}
+    controller: App\Controller\TaskController::update
+    methods: [PATCH]
+
+task_delete:
+    path: /api/tasks/{id}
+    controller: App\Controller\TaskController::delete
+    methods: [DELETE]
+
+status_index:
+    path: /api/statuses
+    controller: App\Controller\StatusController::index
+    methods: [GET]
+
+priority_index:
+    path: /api/priorities
+    controller: App\Controller\PriorityController::index
+    methods: [GET]
