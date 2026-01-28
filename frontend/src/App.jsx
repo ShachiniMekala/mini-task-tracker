@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
+import { messages } from './utility/messages';
 import { projectService } from './api/project.service';
-import ProjectSidebar from './components/ProjectSidebar';
-import ProjectForm from './components/ProjectForm';
-import TaskList from './components/TaskList';
+import ProjectSidebar from './components/project/ProjectSidebar';
+import ProjectForm from './components/project/ProjectForm';
+import TaskList from './components/task/TaskList';
 import './App.css';
 
 function App() {
