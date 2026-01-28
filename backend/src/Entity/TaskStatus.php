@@ -21,6 +21,7 @@ class TaskStatus
     private ?string $name = null;
 
     #[ORM\Column(length: 50, nullable: true)]
+    #[Groups(['task:read'])]
     private ?string $label = null;
 
     public function getId(): ?int { return $this->id; }

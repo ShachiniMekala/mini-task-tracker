@@ -47,8 +47,8 @@ class TaskRepository extends ServiceEntityRepository
             ->addSelect('s', 'p');
 
         if (array_key_exists('status', $filters) && !empty($filters['status'])) {
-            $qb->andWhere('s.name = :status')
-               ->setParameter('status', $filters['status']);
+            $qb->andWhere('s.id = :statusId')
+               ->setParameter('statusId', $filters['status']);
         }
 
         if (array_key_exists('q', $filters) && !empty($filters['q'])) {

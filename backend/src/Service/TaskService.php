@@ -52,17 +52,14 @@ class TaskService
         $statusId = $data['status_id'] ?? null;
         $priorityId = $data['priority_id'] ?? null;
 
-        // Default status and priority if not provided
-        if (!$statusId || !$priorityId) {
-            $status = $this->statusRepository->findOneByName('todo');
-            $priority = $this->priorityRepository->findOneByName('medium');
-        } else {
-            $status = $this->statusRepository->find($statusId);
-            $priority = $this->priorityRepository->find($priorityId);
-        }
+        // Handle status - use provided ID or fallback to todo
+        $status = $statusId ? $this->statusRepository->find($statusId) : $this->statusRepository->findOneByName('todo');
+        
+        // Handle priority - use provided ID or fallback to low
+        $priority = $priorityId ? $this->priorityRepository->find($priorityId) : $this->priorityRepository->findOneByName('low');
 
         if (!$status instanceof TaskStatus || !$priority instanceof TaskPriority) {
-            throw new UnprocessableEntityHttpException('Invalid status or priority ID');
+            throw new UnprocessableEntityHttpException('Invalid status or priority configuration in the system');
         }
 
         $task->setStatus($status);
@@ -95,7 +92,7 @@ class TaskService
             if ($task->getStatus()->getId() !== $newStatus->getId()) {
                 $rule = $this->workflowRuleRepository->getRule($task->getStatus()->getId(), $newStatus->getId());
                 if (!$rule instanceof TaskWorkflowRule) {
-                    throw new UnprocessableEntityHttpException('Invalid transition from ' . $task->getStatus()->getName() . ' to ' . $newStatus->getName());
+                    throw new UnprocessableEntityHttpException('Invalid transition from ' . $task->getStatus()->getLabel() . ' to ' . $newStatus->getLabel());
                 }
                 $task->setStatus($newStatus);
                 $task->setTransitionComment($rule->getDefaultComment());
