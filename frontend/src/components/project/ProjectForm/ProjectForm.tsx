@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { rules } from '../../utility/rules';
-import Button from '../common/Button/Button';
+import { rules } from '../../../utility/rules';
+import Button from '../../common/Button/Button';
 import './ProjectForm.css';
 import { ProjectModel } from '@/utility/types';
 

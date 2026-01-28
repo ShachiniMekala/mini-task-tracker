@@ -1,6 +1,6 @@
 import { Priority, Status, Task } from "@/utility/types";
-import { useConfig } from "../../context/ConfigContext";
-import { TrashIcon } from "../common/Icons";
+import { useConfig } from "../../../context/ConfigContext";
+import { TrashIcon } from "../../common/Icons";
 import "./TaskRow.css";
 
 interface TaskRowProps {
@@ -26,7 +26,7 @@ const TaskRow = ({ task, onUpdate, onDelete }: TaskRowProps) => {
       <div className="task-status-col">
         <select
           value={task.status.id}
-          onChange={(e) => onUpdate(task.id, { status_id: e.target.value })}
+          onChange={(e) => onUpdate(task.id, { statusId: e.target.value })}
           className="task-select"
         >
           {statuses.map((s: Status) => (
@@ -40,7 +40,7 @@ const TaskRow = ({ task, onUpdate, onDelete }: TaskRowProps) => {
       <div className="task-priority-col">
         <select
           value={String(task.priority.id)}
-          onChange={(e) => onUpdate(task.id, { priority_id: e.target.value })}
+          onChange={(e) => onUpdate(task.id, { priorityId: e.target.value })}
           className="task-select"
         >
           {priorities?.map((p: Priority) => (

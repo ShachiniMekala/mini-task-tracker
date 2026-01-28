@@ -1,6 +1,6 @@
 import { Project } from "@/utility/types";
-import Button from "../common/Button/Button";
-import { PlusIcon } from "../common/Icons";
+import Button from "../../common/Button/Button";
+import { PlusIcon } from "../../common/Icons";
 import "./ProjectSidebar.css";
 
 interface ProjectSidebarProps {

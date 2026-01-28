@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useConfig } from '../../context/ConfigContext';
-import { rules } from '../../utility/rules';
-import Button from '../common/Button/Button';
+import { useConfig } from '../../../context/ConfigContext';
+import { rules } from '../../../utility/rules';
+import Button from '../../common/Button/Button';
 import './TaskForm.css';
 import { Priority, TaskModel } from '@/utility/types';
 

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
-import { messages } from '../../utility/messages';
-import { taskService } from '../../api/task.service';
-import { useConfig } from '../../context/ConfigContext';
-import TaskForm from './TaskForm';
-import TaskRow from './TaskRow';
-import TaskFilters from './TaskFilters';
-import Button from '../common/Button/Button';
-import { PlusIcon, NoteIcon } from '../common/Icons';
+import { messages } from '../../../utility/messages';
+import { taskService } from '../../../api/task.service';
+import { useConfig } from '../../../context/ConfigContext';
+import TaskForm from '../TaskForm/TaskForm';
+import TaskRow from '../TaskRow/TaskRow';
+import TaskFilters from '../TaskFilters/TaskFilters';
+import Button from '../../common/Button/Button';
+import { PlusIcon, NoteIcon } from '../../common/Icons';
 import './TaskList.css';
 
 const TaskList = ({ project }: any) => {
