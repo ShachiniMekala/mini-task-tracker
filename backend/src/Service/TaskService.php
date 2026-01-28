@@ -49,8 +49,8 @@ class TaskService
         $task->setDescription($data['description'] ?? null);
         $task->setProject($project);
 
-        $statusId = $data['status_id'] ?? null;
-        $priorityId = $data['priority_id'] ?? null;
+        $statusId = $data['statusId'] ?? null;
+        $priorityId = $data['priorityId'] ?? null;
 
         // Handle status - use provided ID or fallback to todo
         $status = $statusId ? $this->statusRepository->find($statusId) : $this->statusRepository->findOneByName('todo');
@@ -82,8 +82,8 @@ class TaskService
             throw new NotFoundHttpException('Task not found');
         }
 
-        if (array_key_exists('status_id', $data) && !empty($data['status_id'])) {
-            $newStatusID = $data['status_id'];
+        if (array_key_exists('statusId', $data) && !empty($data['statusId'])) {
+            $newStatusID = $data['statusId'];
             $newStatus = $this->statusRepository->find($newStatusID);
             if (!$newStatus instanceof TaskStatus) {
                 throw new UnprocessableEntityHttpException('Invalid status ID');
@@ -99,8 +99,8 @@ class TaskService
             }
         }
 
-        if (isset($data['priority_id'])) {
-            $newPriorityID = $data['priority_id'];
+        if (array_key_exists('priorityId', $data) && !empty($data['priorityId'])) {
+            $newPriorityID = $data['priorityId'];
             $newPriority = $this->priorityRepository->find($newPriorityID);
             if (!$newPriority instanceof TaskPriority) {
                 throw new UnprocessableEntityHttpException('Invalid priority ID');
