@@ -2,23 +2,32 @@ import React, { useState } from 'react';
 import { rules } from '../../utility/rules';
 import Button from '../common/Button/Button';
 import './ProjectForm.css';
+import { ProjectModel } from '@/utility/types';
 
-const ProjectForm = ({ onSubmit, onCancel }) => {
+interface ProjectFormProps {
+  onSubmit: (project: ProjectModel) => void;
+  onCancel: () => void;
+}
+
+const MAX_DESCRIPTION_LENGTH = 1000;
+const MAX_NAME_LENGTH = 255;
+
+const ProjectForm = ({ onSubmit, onCancel }: ProjectFormProps) => {
   const [project, setProject] = useState({ name: '', description: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<{ [key: string]: string | null }>({});
 
   const validate = () => {
-    const newErrors = {};
+    const newErrors: { [key: string]: string | null } = {};
     
     const nameError = rules.validate(project.name, [
       rules.required,
-      rules.maxLength(255)
+      rules.maxLength(MAX_NAME_LENGTH)
     ]);
     if (nameError) newErrors.name = nameError;
 
     const descError = rules.validate(project.description, [
-      rules.maxLength(1000)
+      rules.maxLength(MAX_DESCRIPTION_LENGTH)
     ]);
     if (descError) newErrors.description = descError;
 
@@ -26,7 +35,7 @@ const ProjectForm = ({ onSubmit, onCancel }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (!validate()) return;
 

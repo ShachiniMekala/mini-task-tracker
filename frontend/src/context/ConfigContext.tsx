@@ -2,11 +2,11 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { configService } from '../api/config.service';
 import { toast } from 'react-hot-toast';
 
-const ConfigContext = createContext();
+const ConfigContext = createContext<any>(undefined);
 
-export const ConfigProvider = ({ children }) => {
-  const [statuses, setStatuses] = useState([]);
-  const [priorities, setPriorities] = useState([]);
+export const ConfigProvider = ({ children }: any) => {
+  const [statuses, setStatuses] = useState<any[]>([]);
+  const [priorities, setPriorities] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

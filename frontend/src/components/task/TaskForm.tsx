@@ -3,47 +3,56 @@ import { useConfig } from '../../context/ConfigContext';
 import { rules } from '../../utility/rules';
 import Button from '../common/Button/Button';
 import './TaskForm.css';
+import { Priority, TaskModel } from '@/utility/types';
 
-const TaskForm = ({ onSubmit, onCancel }) => {
-  const { priorities } = useConfig();
-  const [task, setTask] = useState({ 
+interface TaskFormProps {
+  onSubmit: (task: TaskModel) => void;
+  onCancel: () => void;
+}
+
+const MAX_DESCRIPTION_LENGTH = 1000;
+const MAX_TITLE_LENGTH = 255;
+
+const TaskForm = ({ onSubmit, onCancel }: TaskFormProps) => {
+  const { priorities }: { priorities: Priority[] } = useConfig();
+  const [task, setTask] = useState<TaskModel>({ 
     title: '', 
     description: '', 
-    priority_id: '' 
+    priorityId: '' 
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<{ [key: string]: string | null }>({});
 
   useEffect(() => {
-    if (priorities?.length > 0 && !task.priority_id) {
-      setTask(prev => ({ ...prev, priority_id: String(priorities[0].id) }));
+    if (priorities?.length > 0 && !task.priorityId) {
+      setTask(prev => ({ ...prev, priorityId: String(priorities[0].id) }));
     }
-  }, [priorities, task.priority_id]);
+  }, [priorities, task.priorityId]);
 
   const validate = () => {
-    const newErrors = {};
+    const newErrors: { [key: string]: string | null } = {};
     
     const titleError = rules.validate(task.title, [
       rules.required,
-      rules.maxLength(255)
+      rules.maxLength(MAX_TITLE_LENGTH)
     ]);
     if (titleError) newErrors.title = titleError;
 
     const descError = rules.validate(task.description, [
-      rules.maxLength(1000)
+      rules.maxLength(MAX_DESCRIPTION_LENGTH)
     ]);
     if (descError) newErrors.description = descError;
 
-    const priorityError = rules.validate(task.priority_id, [
+    const priorityError = rules.validate(task.priorityId, [
       rules.required
     ]);
-    if (priorityError) newErrors.priority_id = priorityError;
+    if (priorityError) newErrors.priorityId = priorityError;
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (!validate()) return;
 
@@ -94,14 +103,14 @@ const TaskForm = ({ onSubmit, onCancel }) => {
             <label className="form-label label-required">Priority</label>
             <select 
               className={`input-field ${errors.priority_id ? 'input-error' : ''}`}
-              value={String(task.priority_id)} 
+              value={String(task.priorityId)} 
               onChange={e => {
-                setTask({...task, priority_id: e.target.value});
+                setTask({...task, priorityId: e.target.value});
                 if (errors.priority_id) setErrors(prev => ({ ...prev, priority_id: null }));
               }}
               disabled={isSubmitting}
             >
-              {!task.priority_id && <option value="">Select Priority</option>}
+              {!task.priorityId && <option value="">Select Priority</option>}
               {priorities?.map(p => (
                 <option key={p.id} value={String(p.id)}>{p.label || p.name}</option>
               ))}

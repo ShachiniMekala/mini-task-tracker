@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import { messages } from './utility/messages';
 import { projectService } from './api/project.service';
@@ -6,10 +6,11 @@ import ProjectSidebar from './components/project/ProjectSidebar';
 import ProjectForm from './components/project/ProjectForm';
 import TaskList from './components/task/TaskList';
 import './App.css';
+import { Project, ProjectModel } from './utility/types';
 
 function App() {
-  const [projects, setProjects] = useState([]);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -32,7 +33,7 @@ function App() {
     }
   };
 
-  const handleCreateProject = async (data) => {
+  const handleCreateProject = async (data: ProjectModel) => {
     try {
       const response = await projectService.create(data);
       const newProject = response.data;
@@ -40,7 +41,7 @@ function App() {
       setSelectedProject(newProject);
       setShowProjectForm(false);
       toast.success(messages.SUCCESSFULLY_CREATED);
-    } catch (error) {
+    } catch (error: any) {
       toast.error(error.response?.data?.error || messages.FAILED_TO_CREATE);
     }
   };

@@ -7,11 +7,12 @@ import TaskForm from './TaskForm';
 import TaskRow from './TaskRow';
 import TaskFilters from './TaskFilters';
 import Button from '../common/Button/Button';
+import { PlusIcon, NoteIcon } from '../common/Icons';
 import './TaskList.css';
 
-const TaskList = ({ project }) => {
-  const { statuses } = useConfig();
-  const [tasks, setTasks] = useState([]);
+const TaskList = ({ project }: any) => {
+  const { statuses } = useConfig()!;
+  const [tasks, setTasks] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [statusFilter, setStatusFilter] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
@@ -24,6 +25,7 @@ const TaskList = ({ project }) => {
   }, [project, statusFilter, searchQuery]);
 
   const fetchTasks = async (showLoading = true) => {
+    if (!project) return;
     if (showLoading) setLoading(true);
     try {
       const response = await taskService.getByProject(project.id, {
@@ -38,34 +40,34 @@ const TaskList = ({ project }) => {
     }
   };
 
-  const handleAddTask = async (taskData) => {
+  const handleAddTask = async (taskData: any) => {
     try {
-      await taskService.create(project.id, taskData);
+      await taskService.create(project!.id, taskData);
       setShowAddForm(false);
       await fetchTasks(false);
       toast.success(messages.SUCCESSFULLY_CREATED);
-    } catch (error) {
+    } catch (error: any) {
       toast.error(error.response?.data?.error || messages.FAILED_TO_CREATE);
     }
   };
 
-  const handleUpdateTask = async (taskId, updates) => {
+  const handleUpdateTask = async (taskId: number, updates: any) => {
     try {
       await taskService.update(taskId, updates);
       await fetchTasks(false);
       toast.success(messages.SUCCESSFULLY_UPDATED);
-    } catch (error) {
+    } catch (error: any) {
       toast.error(error.response?.data?.error || messages.FAILED_TO_UPDATE);
     }
   };
 
-  const handleDeleteTask = async (taskId) => {
+  const handleDeleteTask = async (taskId: number) => {
     if (window.confirm('Are you sure you want to delete this task?')) {
       try {
         await taskService.delete(taskId);
         await fetchTasks(false);
         toast.success(messages.SUCCESSFULLY_DELETED);
-      } catch (error) {
+      } catch (error: any) {
         toast.error(messages.FAILED_TO_DELETE);
       }
     }
@@ -89,12 +91,7 @@ const TaskList = ({ project }) => {
         <Button 
           onClick={() => setShowAddForm(true)} 
           className="btn-primary btn-large"
-          icon={
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-            </svg>
-          }
+          icon={<PlusIcon />}
         >
           Add Task
         </Button>
@@ -139,7 +136,9 @@ const TaskList = ({ project }) => {
 
       {!loading && tasks.length === 0 && (
         <div className="empty-state">
-          <div className="empty-state-icon">📝</div>
+          <div className="empty-state-icon">
+            <NoteIcon />
+          </div>
           <h3>No tasks found</h3>
           <p className="project-meta">Create your first task to get started with this project.</p>
           <Button 
