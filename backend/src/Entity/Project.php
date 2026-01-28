@@ -22,10 +22,12 @@ class Project
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Project name cannot be empty')]
+    #[Assert\Length(max: 255, maxMessage: 'Project name cannot be longer than {{ limit }} characters')]
     #[Groups(['project:read'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 1000, nullable: true)]
+    #[Assert\Length(max: 1000, maxMessage: 'Description cannot be longer than {{ limit }} characters')]
     #[Groups(['project:read'])]
     private ?string $description = null;
 
