@@ -1,0 +1,17 @@
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+}
+
+.filter-search {
+  flex: 1;
+}
+
+.filter-status {
+  width: 200px;
+}
+

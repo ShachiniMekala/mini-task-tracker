@@ -1,0 +1,41 @@
+.task-form-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 450px;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+
+.task-form-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.form-group-last {
+  margin-bottom: 2rem;
+}
+
