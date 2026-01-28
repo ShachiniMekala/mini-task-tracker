@@ -24,7 +24,59 @@
               ]
             }
           },
-          "response": []
+          "response": [
+            {
+              "name": "Get Projects",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{SERVER_URL}}/projects",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 18:29:05 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 3,\n        \"name\": \"Quiz competition\",\n        \"description\": \"Annual quiz competition to test the employee knowledge \",\n        \"createdAt\": \"2026-01-28T18:28:52+00:00\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Completing the Assignment\",\n        \"description\": \"The assignment given to practice the lessons learned\",\n        \"createdAt\": \"2026-01-28T18:28:11+00:00\"\n    },\n    {\n        \"id\": 1,\n        \"name\": \"Organizing Project meeting\",\n        \"description\": \"\",\n        \"createdAt\": \"2026-01-28T18:27:11+00:00\"\n    }\n]"
+            }
+          ]
         },
         {
           "name": "Add Project",
@@ -33,7 +85,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\": \"Another project\",\r\n    \"description\": \"Assignment to check the coding skills\"\r\n}",
+              "raw": "{\r\n    \"name\": \"Creating mini task tracker\",\r\n    \"description\": \"Assignment to check the coding skills\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -50,7 +102,128 @@
               ]
             }
           },
-          "response": []
+          "response": [
+            {
+              "name": "Add Project",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Creating mini task tracker\",\r\n    \"description\": \"Assignment to check the coding skills\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{SERVER_URL}}/projects",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 17:47:41 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 31,\n    \"name\": \"Creating mini task tracker\",\n    \"description\": \"Assignment to check the coding skills\",\n    \"createdAt\": \"2026-01-28T17:47:41+00:00\"\n}"
+            },
+            {
+              "name": "Add Project",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": null,\r\n    \"description\": \"Assignment to check the coding skills\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{SERVER_URL}}/projects",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "Unprocessable Content",
+              "code": 422,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 18:09:24 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"Invalid Data Submitted\"\n}"
+            }
+          ]
         }
       ]
     },
@@ -63,7 +236,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{SERVER_URL}}/projects/:projectId/tasks?filter[q]=ded&filter[status]=2",
+              "raw": "{{SERVER_URL}}/projects/:projectId/tasks",
               "host": [
                 "{{SERVER_URL}}"
               ],
@@ -76,23 +249,166 @@
                 {
                   "key": "filter[q]",
                   "value": "ded",
-                  "type": "text"
+                  "disabled": true
                 },
                 {
                   "key": "filter[status]",
                   "value": "2",
-                  "type": "text"
+                  "disabled": true
                 }
               ],
               "variable": [
                 {
                   "key": "projectId",
-                  "value": "30"
+                  "value": "3"
                 }
               ]
             }
           },
-          "response": []
+          "response": [
+            {
+              "name": "Get Tasks",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{SERVER_URL}}/projects/:projectId/tasks",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "tasks"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[q]",
+                      "value": "ded",
+                      "disabled": true
+                    },
+                    {
+                      "key": "filter[status]",
+                      "value": "2",
+                      "disabled": true
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "projectId",
+                      "value": "30"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 18:11:36 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 14,\n        \"project\": {\n            \"id\": 30\n        },\n        \"title\": \"ded\",\n        \"description\": \"edede\",\n        \"status\": {\n            \"id\": 1,\n            \"name\": \"todo\",\n            \"label\": \"To Do\"\n        },\n        \"priority\": {\n            \"id\": 1,\n            \"name\": \"low\",\n            \"label\": \"Low\"\n        },\n        \"createdAt\": \"2026-01-28T17:44:03+00:00\",\n        \"transitionComment\": null\n    },\n    {\n        \"id\": 13,\n        \"project\": {\n            \"id\": 30\n        },\n        \"title\": \"Abs\",\n        \"description\": \"helo\",\n        \"status\": {\n            \"id\": 3,\n            \"name\": \"done\",\n            \"label\": \"Done\"\n        },\n        \"priority\": {\n            \"id\": 2,\n            \"name\": \"medium\",\n            \"label\": \"Medium\"\n        },\n        \"createdAt\": \"2026-01-28T17:43:48+00:00\",\n        \"transitionComment\": \"fast-tracked\"\n    }\n]"
+            },
+            {
+              "name": "Get Tasks",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{SERVER_URL}}/projects/:projectId/tasks",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "tasks"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[q]",
+                      "value": "ded",
+                      "disabled": true
+                    },
+                    {
+                      "key": "filter[status]",
+                      "value": "2",
+                      "disabled": true
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "projectId",
+                      "value": "3000"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 18:12:15 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"Project not found\"\n}"
+            }
+          ]
         },
         {
           "name": "Add Task",
@@ -101,7 +417,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\": \"Another project\",\r\n    \"description\": \"Assignment to check the coding skills\"\r\n}",
+              "raw": "{\r\n    \"title\": \"Task 1\",\r\n    \"description\": \"Assignment to check the coding skills\",\r\n    \"statusId\": 1,\r\n    \"priorityId\": 1\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -109,16 +425,229 @@
               }
             },
             "url": {
-              "raw": "{{SERVER_URL}}/projects",
+              "raw": "{{SERVER_URL}}/projects/:projectId/tasks",
               "host": [
                 "{{SERVER_URL}}"
               ],
               "path": [
-                "projects"
+                "projects",
+                ":projectId",
+                "tasks"
+              ],
+              "variable": [
+                {
+                  "key": "projectId",
+                  "value": "1"
+                }
               ]
             }
           },
-          "response": []
+          "response": [
+            {
+              "name": "Add Task",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Task 1\",\r\n    \"description\": \"Assignment to check the coding skills\",\r\n    \"statusId\": 1,\r\n    \"priorityId\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{SERVER_URL}}/projects/:projectId/tasks",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "tasks"
+                  ],
+                  "variable": [
+                    {
+                      "key": "projectId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 17:58:43 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 19,\n    \"project\": {\n        \"id\": 1\n    },\n    \"title\": \"Task 1\",\n    \"description\": \"Assignment to check the coding skills\",\n    \"status\": {\n        \"id\": 1,\n        \"name\": \"todo\",\n        \"label\": \"To Do\"\n    },\n    \"priority\": {\n        \"id\": 1,\n        \"name\": \"low\",\n        \"label\": \"Low\"\n    },\n    \"createdAt\": \"2026-01-28T17:58:43+00:00\",\n    \"transitionComment\": null\n}"
+            },
+            {
+              "name": "Add Task",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": null,\r\n    \"description\": \"Assignment to check the coding skills\",\r\n    \"statusId\": 1,\r\n    \"priorityId\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{SERVER_URL}}/projects/:projectId/tasks",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "tasks"
+                  ],
+                  "variable": [
+                    {
+                      "key": "projectId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Content",
+              "code": 422,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 18:12:50 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"Invalid Data Submitted\"\n}"
+            },
+            {
+              "name": "Add Task",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Task 1\",\r\n    \"description\": \"Assignment to check the coding skills\",\r\n    \"statusId\": 100,\r\n    \"priorityId\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{SERVER_URL}}/projects/:projectId/tasks",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "tasks"
+                  ],
+                  "variable": [
+                    {
+                      "key": "projectId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Content",
+              "code": 422,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 18:13:04 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"Invalid status or priority configuration in the system\"\n}"
+            }
+          ]
         },
         {
           "name": "Delete Task",
@@ -145,15 +674,337 @@
               ]
             }
           },
-          "response": []
+          "response": [
+            {
+              "name": "Delete Task",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Another project\",\r\n    \"description\": \"Assignment to check the coding skills\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{SERVER_URL}}/tasks/15",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "tasks",
+                    "15"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 18:13:56 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"Task not found\"\n}"
+            },
+            {
+              "name": "Delete Task",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Another project\",\r\n    \"description\": \"Assignment to check the coding skills\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{SERVER_URL}}/tasks/19",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "tasks",
+                    "19"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 18:14:13 GMT"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
         },
         {
           "name": "Update Task",
           "request": {
-            "method": "GET",
-            "header": []
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"statusId\": \"33\",\r\n    \"priorityId\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SERVER_URL}}/tasks/14",
+              "host": [
+                "{{SERVER_URL}}"
+              ],
+              "path": [
+                "tasks",
+                "14"
+              ]
+            }
           },
-          "response": []
+          "response": [
+            {
+              "name": "Update Task",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"statusId\": \"33\",\r\n    \"priorityId\": 2\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{SERVER_URL}}/tasks/17",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "tasks",
+                    "17"
+                  ]
+                }
+              },
+              "status": "Unprocessable Content",
+              "code": 422,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 18:14:24 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"Invalid status ID\"\n}"
+            },
+            {
+              "name": "Update Task",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"statusId\": 2,\r\n    \"priorityId\": 2\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{SERVER_URL}}/tasks/17",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "tasks",
+                    "17"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 18:14:43 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 17,\n    \"project\": {\n        \"id\": 1\n    },\n    \"title\": \"Task 1\",\n    \"description\": \"Assignment to check the coding skills\",\n    \"status\": {\n        \"id\": 2,\n        \"name\": \"in_progress\",\n        \"label\": \"In Progress\"\n    },\n    \"priority\": {\n        \"id\": 2,\n        \"name\": \"medium\",\n        \"label\": \"Medium\"\n    },\n    \"createdAt\": \"2026-01-28T17:58:16+00:00\",\n    \"transitionComment\": null\n}"
+            },
+            {
+              "name": "Update Task",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"statusId\": 1,\r\n    \"priorityId\": 2\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{SERVER_URL}}/tasks/17",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "tasks",
+                    "17"
+                  ]
+                }
+              },
+              "status": "Unprocessable Content",
+              "code": 422,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 18:14:55 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"Invalid transition from In Progress to To Do\"\n}"
+            }
+          ]
         }
       ]
     },
@@ -175,7 +1026,59 @@
               ]
             }
           },
-          "response": []
+          "response": [
+            {
+              "name": "Get Statuses",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{SERVER_URL}}/statuses",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "statuses"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 18:23:36 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"name\": \"todo\",\n        \"label\": \"To Do\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"in_progress\",\n        \"label\": \"In Progress\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"done\",\n        \"label\": \"Done\"\n    }\n]"
+            }
+          ]
         },
         {
           "name": "Get Priorities",
@@ -204,7 +1107,68 @@
               ]
             }
           },
-          "response": []
+          "response": [
+            {
+              "name": "Get Priorities",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Another project\",\r\n    \"description\": \"Assignment to check the coding skills\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{SERVER_URL}}/priorities",
+                  "host": [
+                    "{{SERVER_URL}}"
+                  ],
+                  "path": [
+                    "priorities"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.3.29"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 28 Jan 2026 18:23:45 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "X-Robots-Tag",
+                  "value": "noindex"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"name\": \"low\",\n        \"label\": \"Low\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"medium\",\n        \"label\": \"Medium\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"high\",\n        \"label\": \"High\"\n    }\n]"
+            }
+          ]
         }
       ]
     }
@@ -236,7 +1200,7 @@
   "variable": [
     {
       "key": "SERVER_URL",
-      "value": ""
+      "value": "http://localhost:8000/api"
     }
   ]
 }
