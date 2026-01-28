@@ -26,7 +26,11 @@ A full-stack application to track tasks with project grouping and status workflo
 
 2.  **Install PHP dependencies:**
     ```bash
+    # Option A: If you have composer installed globally
     composer install
+
+    # Option B: If you use the local composer.phar
+    php composer.phar install
     ```
 
 3.  **Setup the Database:**
