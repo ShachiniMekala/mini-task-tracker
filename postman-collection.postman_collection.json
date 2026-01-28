@@ -1,0 +1,242 @@
+{
+  "info": {
+    "_postman_id": "dfef636f-fca3-4d8c-a5be-eb95245ad8fa",
+    "name": "mini-task-tracker-postman-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "7078946"
+  },
+  "item": [
+    {
+      "name": "Project",
+      "item": [
+        {
+          "name": "Get Projects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SERVER_URL}}/projects",
+              "host": [
+                "{{SERVER_URL}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Project",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Another project\",\r\n    \"description\": \"Assignment to check the coding skills\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SERVER_URL}}/projects",
+              "host": [
+                "{{SERVER_URL}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Task",
+      "item": [
+        {
+          "name": "Get Tasks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SERVER_URL}}/projects/:projectId/tasks?filter[q]=ded&filter[status]=2",
+              "host": [
+                "{{SERVER_URL}}"
+              ],
+              "path": [
+                "projects",
+                ":projectId",
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "filter[q]",
+                  "value": "ded",
+                  "type": "text"
+                },
+                {
+                  "key": "filter[status]",
+                  "value": "2",
+                  "type": "text"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "projectId",
+                  "value": "30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Task",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Another project\",\r\n    \"description\": \"Assignment to check the coding skills\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SERVER_URL}}/projects",
+              "host": [
+                "{{SERVER_URL}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Task",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Another project\",\r\n    \"description\": \"Assignment to check the coding skills\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SERVER_URL}}/tasks/15",
+              "host": [
+                "{{SERVER_URL}}"
+              ],
+              "path": [
+                "tasks",
+                "15"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Task",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Config",
+      "item": [
+        {
+          "name": "Get Statuses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{SERVER_URL}}/statuses",
+              "host": [
+                "{{SERVER_URL}}"
+              ],
+              "path": [
+                "statuses"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Priorities",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Another project\",\r\n    \"description\": \"Assignment to check the coding skills\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{SERVER_URL}}/priorities",
+              "host": [
+                "{{SERVER_URL}}"
+              ],
+              "path": [
+                "priorities"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "SERVER_URL",
+      "value": ""
+    }
+  ]
+}
