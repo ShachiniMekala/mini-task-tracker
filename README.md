@@ -143,6 +143,26 @@ A comprehensive Postman collection is included in the root directory:
   - **Reasoning:** Since the application uses partial matching (`LIKE '%...%'`) for searches and sorts by `createdAt`, standard indexes would provide no performance benefit while adding unnecessary write overhead.
   - **Integrity Indexes:** Unique indexes were maintained on lookup tables (`task_status`, `task_priority`) to ensure data integrity and facilitate fast ID-to-name lookups.
 
+## Database Structure
+
+The application uses an SQLite database with the following table structure:
+
+- **`project`**: Stores project details.
+  - `id` (PK), `name`, `description`, `created_at`
+- **`task`**: Stores tasks associated with projects.
+  - `id` (PK), `project_id` (FK), `status_id` (FK), `priority_id` (FK), `title`, `description`, `transition_comment`, `created_at`
+- **`task_status`**: Lookup table for task statuses (e.g., TODO, IN_PROGRESS, DONE).
+  - `id` (PK), `name` (unique identifier), `label` (display name)
+- **`task_priority`**: Lookup table for task priorities (e.g., LOW, MEDIUM, HIGH).
+  - `id` (PK), `name` (unique identifier), `label` (display name)
+- **`task_workflow_rule`**: Defines allowed transitions between task statuses.
+  - `id` (PK), `from_status_id` (FK), `to_status_id` (FK), `default_comment`
+
+**Relationships:**
+- A **Project** has many **Tasks**.
+- A **Task** belongs to one **Project**, one **Status**, and one **Priority**.
+- **Workflow Rules** govern how a Task's **Status** can change.
+
 ## Future Improvements
   - **Pagination:** For production use, adding pagination to the project sidebar and task list would be essential to maintain performance as data grows.
   - **UI-driven Workflow Restrictions:** Currently, the backend enforces workflow rules and returns errors for invalid transitions (as per requirements). A future improvement would be to update the UI to only display allowed transition options in the dropdown, preventing invalid actions before they happen.
