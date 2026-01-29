@@ -102,11 +102,11 @@ const TaskForm = ({ onSubmit, onCancel }: TaskFormProps) => {
           <div className="form-group form-group-last">
             <label className="form-label label-required">Priority</label>
             <select 
-              className={`input-field ${errors.priority_id ? 'input-error' : ''}`}
+              className={`input-field ${errors.priorityId ? 'input-error' : ''}`}
               value={String(task.priorityId)} 
               onChange={e => {
                 setTask({...task, priorityId: e.target.value});
-                if (errors.priority_id) setErrors(prev => ({ ...prev, priority_id: null }));
+                if (errors.priorityId) setErrors(prev => ({ ...prev, priorityId: null }));
               }}
               disabled={isSubmitting}
             >
@@ -115,7 +115,7 @@ const TaskForm = ({ onSubmit, onCancel }: TaskFormProps) => {
                 <option key={p.id} value={String(p.id)}>{p.label || p.name}</option>
               ))}
             </select>
-            {errors.priority_id && <div className="error-text">{errors.priority_id}</div>}
+            {errors.priorityId && <div className="error-text">{errors.priorityId}</div>}
           </div>
 
           <div className="form-actions">

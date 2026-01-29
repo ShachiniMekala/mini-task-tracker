@@ -63,7 +63,7 @@ class TaskServiceTest extends TestCase
         $this->validator->method('validate')->willReturn(new ConstraintViolationList());
 
         // 3. Execute
-        $updatedTask = $this->taskService->updateTask(1, ['status_id' => 2]);
+        $updatedTask = $this->taskService->updateTask(1, ['statusId' => 2]);
 
         // 4. Assert
         $this->assertSame($newStatus, $updatedTask->getStatus());
@@ -90,7 +90,7 @@ class TaskServiceTest extends TestCase
         $this->expectExceptionMessage('Invalid transition from Done to To Do');
 
         // 4. Execute
-        $this->taskService->updateTask(1, ['status_id' => 1]);
+        $this->taskService->updateTask(1, ['statusId' => 1]);
     }
 
     private function createMockTaskStatus(string $name, string $label, ?int $id = null): TaskStatus

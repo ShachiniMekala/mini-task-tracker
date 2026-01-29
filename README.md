@@ -148,6 +148,8 @@ A comprehensive Postman collection is included in the root directory:
   - **UI-driven Workflow Restrictions:** Currently, the backend enforces workflow rules and returns errors for invalid transitions (as per requirements). A future improvement would be to update the UI to only display allowed transition options in the dropdown, preventing invalid actions before they happen.
   - **Data Transfer Objects (DTOs):** Transitioning from passing raw arrays to the service layer to using structured DTOs would improve type safety and code clarity.
   - **Comprehensive Test Coverage:** While core workflow logic is tested, expanding the test suite to cover each isolated layer (Controllers, Repositories, Services) with unit and functional tests would ensure long-term stability.
+  - **Custom Delete Confirmation:** Replace the native browser `alert()` and `confirm()` calls with a custom, styled modal component for a more consistent and professional user experience.
+  - **Strict Request Validation:** Currently, the backend ignores unknown parameters in request payloads. A future improvement would be to implement strict validation that rejects requests containing unexpected or additional parameters not defined in the API specification, ensuring higher security and data integrity.
 
 > **Note:** Due to time constraints, only core functionalities (such as status transitions and basic UI components) have been covered with automated tests.
 
