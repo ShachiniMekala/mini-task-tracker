@@ -170,6 +170,8 @@ The application uses an SQLite database with the following table structure:
   - **Comprehensive Test Coverage:** While core workflow logic is tested, expanding the test suite to cover each isolated layer (Controllers, Repositories, Services) with unit and functional tests would ensure long-term stability.
   - **Custom Delete Confirmation:** Replace the native browser `alert()` and `confirm()` calls with a custom, styled modal component for a more consistent and professional user experience.
   - **Strict Request Validation:** Currently, the backend ignores unknown parameters in request payloads. A future improvement would be to implement strict validation that rejects requests containing unexpected or additional parameters not defined in the API specification, ensuring higher security and data integrity.
+  - **Enhanced Project Management:** Expand project functionality to include **editing** (updating name/description) and **deleting** projects (with appropriate task cleanup).
+  - **Advanced Task Sorting:** Implement the ability to sort the task list by different columns (e.g., Title, Priority, Status, Created Date) to improve data organization for the user.
 
 > **Note:** Due to time constraints, only core functionalities (such as status transitions and basic UI components) have been covered with automated tests.
 
