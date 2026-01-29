@@ -11,6 +11,11 @@ A full-stack application to track tasks with project grouping and status workflo
 
 ### 1. Prerequisites
 - **PHP 8.1** or higher
+  - *Note: Ensure the following extensions are enabled in your `php.ini` (remove the `;` at the beginning of the line):*
+    ```ini
+    extension=pdo_sqlite
+    extension=sqlite3
+    ```
 - **Composer** (PHP dependency manager)
 - **Node.js** (v18+) & **npm**
 - **Symfony CLI** (optional but recommended)
@@ -35,22 +40,31 @@ A full-stack application to track tasks with project grouping and status workflo
 
 3.  **Setup the Database:**
     *Ensure you have an `.env` file with the database configuration. By default, it uses SQLite.*
-    ```bash
-    # Create the database file
-    php bin/console doctrine:database:create
     
-    # Run migrations to create tables and seed initial data (Statuses, Priorities, Rules)
-    php bin/console doctrine:migrations:migrate --no-interaction
-    ```
+    1. **Create the database file:**
+       Manually create an empty file named `data.db` in the `backend/var/` directory.
+    
+    2. **Run migrations:**
+       Run the following command to create tables and seed initial data (Statuses, Priorities, Rules):
+       ```bash
+       php bin/console doctrine:migrations:migrate --no-interaction
+       ```
 
 4.  **Start the Backend Server:**
-    Using Symfony CLI:
-    ```bash
-    symfony serve -d
-    ```
-    *Alternatively, use the PHP built-in server:*
+    Run the PHP built-in server:
     ```bash
     php -S localhost:8000 -t public
+    ```
+    *Note: Keep this terminal open while using the application.*
+
+5.  **Run Backend Tests:**
+    To verify the workflow logic and status transitions:
+    ```bash
+    php vendor/bin/phpunit
+    ```
+    *Note: If you encounter issues with missing extensions, you can run:*
+    ```bash
+    php -d extension=mbstring vendor/bin/phpunit
     ```
 
 ---
@@ -79,7 +93,14 @@ A full-stack application to track tasks with project grouping and status workflo
 - **Frontend:** [http://localhost:5173](http://localhost:5173)
 - **Backend API:** [http://localhost:8000](http://localhost:8000)
 
-The frontend is configured to proxy requests to `http://localhost:8000`. If your backend is running on a different port, update the `baseURL` in `frontend/src/api/apiClient.js`.
+The frontend is configured to proxy requests to `http://localhost:8000`. If your backend is running on a different port, update the `baseURL` in `frontend/src/api/client.ts`.
+
+### 5. API Documentation (Postman)
+
+A comprehensive Postman collection is included in the root directory:
+- **File:** `postman-collection.postman_collection.json`
+- **Usage:** Import this file into Postman to test all API endpoints, including Projects, Tasks, and Configuration. 
+- **Environment:** Ensure you set the `SERVER_URL` variable in your Postman environment to `http://localhost:8000/api`.
 
 ## Key Features
 - **Project Sidebar:** Organizes tasks into different projects.
@@ -96,4 +117,29 @@ The frontend is configured to proxy requests to `http://localhost:8000`. If your
   - `src/components/`: Modularized components (Project, Task, Common).
   - `src/api/`: API service layers.
   - `src/context/`: Global configuration context.
+
+## Architectural Decisions
+
+- **State Management:** Instead of using a complex library like Redux, I opted for the native **React Context API** combined with standard parent-child prop passing. 
+  - **Reasoning:** For an application of this scale, Context API provides a lightweight and built-in solution that keeps the codebase simple and easy to maintain. 
+  - **Data Handling:** 
+    - **Projects/Tasks:** These are managed using a classic parent-child relationship since the data flow is straightforward and limited in depth.
+    - **Configuration Data:** Global settings like *Statuses* and *Priorities* are managed via **ConfigContext**. This is ideal because this data is fetched once at application startup and updated infrequently, if at all, during a session.
+
+- **Form Handling:** I chose to use **native HTML form elements** and React state management instead of external libraries like Formik or React Hook Form. This keeps the bundle size small and avoids unnecessary dependencies for a simple tracker.
+
+- **Scalability & Extensibility:**
+  - **Dynamic Configuration:** Statuses and Priorities are stored in separate database tables rather than being hardcoded in the logic. This allows for adding new options without modifying the source code.
+  - **Workflow Engine:** Transition rules are stored in a `task_workflow_rule` table. This decouples the business logic from the code, allowing for complex workflow changes via database updates.
+
+- **Database Indexing Strategy:**
+  - **Lean Schema:** I intentionally avoided adding standard B-tree indexes on fields like `task.description` or `task.title` eventhough ther are used in searching.
+  - **Reasoning:** Since the application uses partial matching (`LIKE '%...%'`) for searches and sorts by `createdAt`, standard indexes would provide no performance benefit while adding unnecessary write overhead.
+  - **Integrity Indexes:** Unique indexes were maintained on lookup tables (`task_status`, `task_priority`) to ensure data integrity and facilitate fast ID-to-name lookups.
+
+## Future Improvements
+  - **Pagination:** For production use, adding pagination to the project sidebar and task list would be essential to maintain performance as data grows.
+  - **UI-driven Workflow Restrictions:** Currently, the backend enforces workflow rules and returns errors for invalid transitions (as per requirements). A future improvement would be to update the UI to only display allowed transition options in the dropdown, preventing invalid actions before they happen.
+  - **Data Transfer Objects (DTOs):** Transitioning from passing raw arrays to the service layer to using structured DTOs would improve type safety and code clarity.
+  - **Comprehensive Test Coverage:** While core workflow logic is tested, expanding the test suite to cover each isolated layer (Controllers, Repositories, Services) with unit and functional tests would ensure long-term stability.
 
