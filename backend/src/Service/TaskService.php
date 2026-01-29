@@ -82,8 +82,8 @@ class TaskService
             throw new NotFoundHttpException('Task not found');
         }
 
-        if (array_key_exists('statusId', $data) && !empty($data['statusId'])) {
-            $newStatusID = $data['statusId'];
+        if (array_key_exists('status_id', $data) && !empty($data['status_id'])) {
+            $newStatusID = $data['status_id'];
             $newStatus = $this->statusRepository->find($newStatusID);
             if (!$newStatus instanceof TaskStatus) {
                 throw new UnprocessableEntityHttpException('Invalid status ID');
@@ -99,8 +99,8 @@ class TaskService
             }
         }
 
-        if (array_key_exists('priorityId', $data) && !empty($data['priorityId'])) {
-            $newPriorityID = $data['priorityId'];
+        if (array_key_exists('priority_id', $data) && !empty($data['priority_id'])) {
+            $newPriorityID = $data['priority_id'];
             $newPriority = $this->priorityRepository->find($newPriorityID);
             if (!$newPriority instanceof TaskPriority) {
                 throw new UnprocessableEntityHttpException('Invalid priority ID');
