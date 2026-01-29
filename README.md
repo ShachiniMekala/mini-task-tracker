@@ -86,6 +86,12 @@ A full-stack application to track tasks with project grouping and status workflo
     npm run dev
     ```
 
+4.  **Run Frontend Tests:**
+    To verify UI components and interactions:
+    ```bash
+    npm test
+    ```
+
 ---
 
 ### 4. Accessing the Application
@@ -142,4 +148,6 @@ A comprehensive Postman collection is included in the root directory:
   - **UI-driven Workflow Restrictions:** Currently, the backend enforces workflow rules and returns errors for invalid transitions (as per requirements). A future improvement would be to update the UI to only display allowed transition options in the dropdown, preventing invalid actions before they happen.
   - **Data Transfer Objects (DTOs):** Transitioning from passing raw arrays to the service layer to using structured DTOs would improve type safety and code clarity.
   - **Comprehensive Test Coverage:** While core workflow logic is tested, expanding the test suite to cover each isolated layer (Controllers, Repositories, Services) with unit and functional tests would ensure long-term stability.
+
+> **Note:** Due to time constraints, only core functionalities (such as status transitions and basic UI components) have been covered with automated tests.
 
