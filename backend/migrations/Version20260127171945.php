@@ -17,12 +17,10 @@ final class Version20260127171945 extends AbstractMigration
     public function up(Schema $schema): void
     {
         $this->addSql('CREATE TABLE project (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name VARCHAR(255) NOT NULL, description VARCHAR(1000) DEFAULT NULL, created_at DATETIME NOT NULL)');
-        $this->addSql('CREATE INDEX idx_project_name ON project (name)');
         $this->addSql('CREATE TABLE task (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title VARCHAR(255) NOT NULL, description VARCHAR(1000) DEFAULT NULL, created_at DATETIME NOT NULL, transition_comment VARCHAR(255) DEFAULT NULL, project_id INTEGER NOT NULL, status_id INTEGER NOT NULL, priority_id INTEGER NOT NULL, CONSTRAINT fk_task_project_id FOREIGN KEY (project_id) REFERENCES project (id) NOT DEFERRABLE INITIALLY IMMEDIATE, CONSTRAINT fk_task_status_id FOREIGN KEY (status_id) REFERENCES task_status (id) NOT DEFERRABLE INITIALLY IMMEDIATE, CONSTRAINT fk_task_priority_id FOREIGN KEY (priority_id) REFERENCES task_priority (id) NOT DEFERRABLE INITIALLY IMMEDIATE)');
         $this->addSql('CREATE INDEX idx_task_project_id ON task (project_id)');
         $this->addSql('CREATE INDEX idx_task_status_id ON task (status_id)');
         $this->addSql('CREATE INDEX idx_task_priority_id ON task (priority_id)');
-        $this->addSql('CREATE INDEX idx_task_title ON task (title)');
         $this->addSql('CREATE TABLE task_priority (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name VARCHAR(20) NOT NULL, label VARCHAR(50) DEFAULT NULL)');
         $this->addSql('CREATE UNIQUE INDEX idx_task_priority_name ON task_priority (name)');
         $this->addSql('CREATE TABLE task_status (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name VARCHAR(20) NOT NULL, label VARCHAR(50) DEFAULT NULL)');
